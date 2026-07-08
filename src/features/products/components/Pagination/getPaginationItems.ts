@@ -4,10 +4,10 @@ const MAX_FLAT_PAGES = 7
 
 // Windowed page list: first, last and the current page's neighbours,
 // with ellipses for the gaps, e.g. [1, '…', 5, 6, 7, '…', 17].
-export function getPaginationItems(
+export const getPaginationItems = (
   page: number,
   totalPages: number,
-): PaginationItem[] {
+): PaginationItem[] => {
   if (totalPages <= MAX_FLAT_PAGES) {
     return Array.from({ length: totalPages }, (_, index) => index + 1)
   }

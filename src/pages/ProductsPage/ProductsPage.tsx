@@ -8,7 +8,7 @@ import {
 } from '@/features/products/hooks/useProductListParams'
 import styles from './ProductsPage.module.scss'
 
-export function ProductsPage() {
+export const ProductsPage = () => {
   const { params, updateParams } = useProductListParams()
 
   const hasActiveFilters =

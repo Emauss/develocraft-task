@@ -10,7 +10,7 @@ interface ProductCardProps {
   product: Product
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <article className={styles.card}>
       <img

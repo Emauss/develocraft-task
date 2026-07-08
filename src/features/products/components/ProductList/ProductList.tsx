@@ -7,7 +7,7 @@ import { ProductCard } from '@/features/products/components/ProductCard'
 import { ProductListSkeleton } from '@/features/products/components/ProductListSkeleton'
 import styles from './ProductList.module.scss'
 
-export function ProductList() {
+export const ProductList = () => {
   const { params, updateParams } = useProductListParams()
   const { data, isPending, isError, error, refetch, isPlaceholderData } =
     useProducts(params)

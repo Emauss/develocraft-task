@@ -7,9 +7,9 @@ import {
   serializeProductListParams,
 } from './useProductListParams'
 
-function params(
+const params = (
   overrides: Partial<typeof defaultProductListParams> = {},
-): typeof defaultProductListParams {
+): typeof defaultProductListParams => {
   return { ...defaultProductListParams, ...overrides }
 }
 

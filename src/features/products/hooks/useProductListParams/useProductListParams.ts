@@ -25,9 +25,9 @@ export const defaultProductListParams: ProductListParams = {
   page: 1,
 }
 
-export function parseProductListParams(
+export const parseProductListParams = (
   searchParams: URLSearchParams,
-): ProductListParams {
+): ProductListParams => {
   const params = productListParamsSchema.parse({
     q: searchParams.get('q') ?? undefined,
     category: searchParams.get('category') ?? undefined,
@@ -46,9 +46,9 @@ export function parseProductListParams(
 }
 
 // Params with default values are omitted so URLs stay clean and shareable.
-export function serializeProductListParams(
+export const serializeProductListParams = (
   params: ProductListParams,
-): URLSearchParams {
+): URLSearchParams => {
   const searchParams = new URLSearchParams()
   if (params.q) {
     searchParams.set('q', params.q)
@@ -70,10 +70,10 @@ export function serializeProductListParams(
 
 const FILTER_KEYS = ['q', 'category', 'sortBy', 'order'] as const
 
-export function applyProductListParamsPatch(
+export const applyProductListParamsPatch = (
   current: ProductListParams,
   patch: Partial<ProductListParams>,
-): ProductListParams {
+): ProductListParams => {
   const next = { ...current, ...patch }
 
   // Search and category filter are mutually exclusive (API limitation):
@@ -95,7 +95,7 @@ export function applyProductListParamsPatch(
   return next
 }
 
-export function useProductListParams() {
+export const useProductListParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const params = useMemo(

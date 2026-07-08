@@ -19,7 +19,7 @@ vi.mock('@/api/products/endpoints', () => ({
   getCategories: vi.fn(),
 }))
 
-function makeProduct(overrides: Partial<Product> = {}): Product {
+const makeProduct = (overrides: Partial<Product> = {}): Product => {
   return {
     id: 1,
     title: 'Test Product',
@@ -33,11 +33,11 @@ function makeProduct(overrides: Partial<Product> = {}): Product {
   }
 }
 
-function makeResponse(products: Product[]): ProductListResponse {
+const makeResponse = (products: Product[]): ProductListResponse => {
   return { products, total: products.length, skip: 0, limit: 12 }
 }
 
-function renderProductsPage(initialEntry = '/') {
+const renderProductsPage = (initialEntry = '/') => {
   const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false } },
   })

@@ -17,31 +17,31 @@ export interface ProductListRequestParams {
   order?: 'asc' | 'desc'
 }
 
-export function getProducts(
+export const getProducts = (
   params: ProductListRequestParams,
   signal?: AbortSignal,
-): Promise<ProductListResponse> {
+): Promise<ProductListResponse> => {
   return apiGet('/products', productListResponseSchema, {
     params: { ...params, select: PRODUCT_SELECT },
     signal,
   })
 }
 
-export function searchProducts(
+export const searchProducts = (
   params: ProductListRequestParams & { q: string },
   signal?: AbortSignal,
-): Promise<ProductListResponse> {
+): Promise<ProductListResponse> => {
   return apiGet('/products/search', productListResponseSchema, {
     params: { ...params, select: PRODUCT_SELECT },
     signal,
   })
 }
 
-export function getProductsByCategory(
+export const getProductsByCategory = (
   slug: string,
   params: ProductListRequestParams,
   signal?: AbortSignal,
-): Promise<ProductListResponse> {
+): Promise<ProductListResponse> => {
   return apiGet(
     `/products/category/${encodeURIComponent(slug)}`,
     productListResponseSchema,
@@ -49,6 +49,6 @@ export function getProductsByCategory(
   )
 }
 
-export function getCategories(signal?: AbortSignal): Promise<Category[]> {
+export const getCategories = (signal?: AbortSignal): Promise<Category[]> => {
   return apiGet('/products/categories', categoryListSchema, { signal })
 }

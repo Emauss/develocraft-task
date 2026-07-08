@@ -5,7 +5,7 @@ interface EmptyStateProps {
   onClear?: () => void
 }
 
-export function EmptyState({ query, onClear }: EmptyStateProps) {
+export const EmptyState = ({ query, onClear }: EmptyStateProps) => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.title}>

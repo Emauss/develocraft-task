@@ -5,7 +5,7 @@ interface ErrorStateProps {
   onRetry: () => void
 }
 
-export function ErrorState({ error, onRetry }: ErrorStateProps) {
+export const ErrorState = ({ error, onRetry }: ErrorStateProps) => {
   return (
     <div className={styles.wrapper} role="alert">
       <h2 className={styles.title}>Something went wrong</h2>

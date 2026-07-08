@@ -8,7 +8,7 @@ interface CategoryFilterProps {
   onChange: (category: string) => void
 }
 
-export function CategoryFilter({ value, onChange }: CategoryFilterProps) {
+export const CategoryFilter = ({ value, onChange }: CategoryFilterProps) => {
   const selectId = useId()
   const { data: categories, isPending, isError } = useCategories()
 

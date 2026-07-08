@@ -21,7 +21,7 @@ export class ApiValidationError extends Error {
   }
 }
 
-function buildUrl(path: string, params?: QueryParams): string {
+const buildUrl = (path: string, params?: QueryParams): string => {
   const baseUrl = (import.meta.env.VITE_API_URL ?? DEFAULT_BASE_URL).replace(
     /\/$/,
     '',
@@ -41,11 +41,11 @@ interface ApiGetOptions {
   signal?: AbortSignal
 }
 
-export async function apiGet<T>(
+export const apiGet = async <T>(
   path: string,
   schema: z.ZodType<T>,
   { params, signal }: ApiGetOptions = {},
-): Promise<T> {
+): Promise<T> => {
   const response = await fetch(buildUrl(path, params), { signal })
   if (!response.ok) {
     throw new ApiError(

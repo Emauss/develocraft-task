@@ -20,12 +20,12 @@ interface SortControlsProps {
   onOrderChange: (order: SortOrder) => void
 }
 
-export function SortControls({
+export const SortControls = ({
   sortBy,
   order,
   onSortByChange,
   onOrderChange,
-}: SortControlsProps) {
+}: SortControlsProps) => {
   const sortById = useId()
   const orderId = useId()
 

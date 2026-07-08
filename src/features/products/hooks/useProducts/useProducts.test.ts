@@ -5,7 +5,7 @@ import {
   getProductsByCategory,
   searchProducts,
 } from '@/api/products/endpoints'
-import { defaultProductListParams } from './useProductListParams'
+import { defaultProductListParams } from '../useProductListParams'
 import { fetchProducts, PAGE_SIZE } from './useProducts'
 
 vi.mock('@/api/products/endpoints', () => ({
@@ -15,9 +15,9 @@ vi.mock('@/api/products/endpoints', () => ({
   getCategories: vi.fn(),
 }))
 
-function params(
+const params = (
   overrides: Partial<typeof defaultProductListParams> = {},
-): typeof defaultProductListParams {
+): typeof defaultProductListParams => {
   return { ...defaultProductListParams, ...overrides }
 }
 

@@ -12,7 +12,7 @@ interface SearchInputProps {
 
 // The URL stays the source of truth: local state is only a typing buffer
 // that reaches the URL after the debounce delay.
-export function SearchInput({ value, onChange }: SearchInputProps) {
+export const SearchInput = ({ value, onChange }: SearchInputProps) => {
   const inputId = useId()
   const [text, setText] = useState(value)
   const debouncedText = useDebouncedValue(text, SEARCH_DEBOUNCE_MS)
