@@ -21,7 +21,14 @@ export function ProductList() {
   }
 
   if (data.products.length === 0) {
-    return <EmptyState />
+    return (
+      <EmptyState
+        query={params.q}
+        onClear={() =>
+          updateParams({ q: '', category: '', sortBy: null, order: 'asc' })
+        }
+      />
+    )
   }
 
   const totalPages = Math.ceil(data.total / PAGE_SIZE)

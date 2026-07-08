@@ -8,3 +8,11 @@
   margin: 0 0 1.5rem;
   font-size: 1.75rem;
 }
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}

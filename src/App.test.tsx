@@ -5,6 +5,7 @@ import type { ProductListResponse } from './api/products/dto'
 import App from './App'
 
 vi.mock('./api/products/endpoints', () => ({
+  searchProducts: vi.fn(),
   getProducts: vi.fn(() =>
     Promise.resolve({
       products: [

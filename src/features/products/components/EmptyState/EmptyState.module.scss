@@ -18,3 +18,17 @@
   color: $color-text-muted;
   font-size: 0.875rem;
 }
+
+.clear {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.25rem;
+  color: $color-surface;
+  background: $color-accent;
+  border: 1px solid $color-accent;
+  border-radius: $radius-sm;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-accent-hover;
+  }
+}
