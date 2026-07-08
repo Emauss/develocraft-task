@@ -5,8 +5,11 @@ import {
   getProductsByCategory,
   searchProducts,
 } from '@/api/products/endpoints'
-import { defaultProductListParams } from '../useProductListParams'
-import { fetchProducts, PAGE_SIZE } from './useProducts'
+import {
+  DEFAULT_PAGE_SIZE,
+  defaultProductListParams,
+} from '../useProductListParams'
+import { fetchProducts } from './useProducts'
 
 vi.mock('@/api/products/endpoints', () => ({
   getProducts: vi.fn(),
@@ -30,7 +33,7 @@ describe('fetchProducts endpoint selection', () => {
     void fetchProducts(params())
 
     expect(getProducts).toHaveBeenCalledWith(
-      { limit: PAGE_SIZE, skip: 0 },
+      { limit: DEFAULT_PAGE_SIZE, skip: 0 },
       undefined,
     )
     expect(searchProducts).not.toHaveBeenCalled()
@@ -41,7 +44,7 @@ describe('fetchProducts endpoint selection', () => {
     void fetchProducts(params({ q: 'phone', page: 2 }))
 
     expect(searchProducts).toHaveBeenCalledWith(
-      { q: 'phone', limit: PAGE_SIZE, skip: PAGE_SIZE },
+      { q: 'phone', limit: DEFAULT_PAGE_SIZE, skip: DEFAULT_PAGE_SIZE },
       undefined,
     )
     expect(getProducts).not.toHaveBeenCalled()
@@ -52,7 +55,7 @@ describe('fetchProducts endpoint selection', () => {
 
     expect(getProductsByCategory).toHaveBeenCalledWith(
       'laptops',
-      { limit: PAGE_SIZE, skip: 0 },
+      { limit: DEFAULT_PAGE_SIZE, skip: 0 },
       undefined,
     )
     expect(getProducts).not.toHaveBeenCalled()
@@ -62,7 +65,7 @@ describe('fetchProducts endpoint selection', () => {
     void fetchProducts(params({ sortBy: 'price', order: 'desc' }))
 
     expect(getProducts).toHaveBeenCalledWith(
-      { limit: PAGE_SIZE, skip: 0, sortBy: 'price', order: 'desc' },
+      { limit: DEFAULT_PAGE_SIZE, skip: 0, sortBy: 'price', order: 'desc' },
       undefined,
     )
   })
@@ -71,7 +74,16 @@ describe('fetchProducts endpoint selection', () => {
     void fetchProducts(params({ page: 4 }))
 
     expect(getProducts).toHaveBeenCalledWith(
-      { limit: PAGE_SIZE, skip: 3 * PAGE_SIZE },
+      { limit: DEFAULT_PAGE_SIZE, skip: 3 * DEFAULT_PAGE_SIZE },
+      undefined,
+    )
+  })
+
+  it('uses the selected page size for the limit and skip', () => {
+    void fetchProducts(params({ limit: 24, page: 3 }))
+
+    expect(getProducts).toHaveBeenCalledWith(
+      { limit: 24, skip: 2 * 24 },
       undefined,
     )
   })
@@ -82,7 +94,7 @@ describe('fetchProducts endpoint selection', () => {
     void fetchProducts(params(), controller.signal)
 
     expect(getProducts).toHaveBeenCalledWith(
-      { limit: PAGE_SIZE, skip: 0 },
+      { limit: DEFAULT_PAGE_SIZE, skip: 0 },
       controller.signal,
     )
   })

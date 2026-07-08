@@ -1,7 +1,8 @@
 import { useProductListParams } from '@/features/products/hooks/useProductListParams'
-import { PAGE_SIZE, useProducts } from '@/features/products/hooks/useProducts'
+import { useProducts } from '@/features/products/hooks/useProducts'
 import { EmptyState } from '@/features/products/components/EmptyState'
 import { ErrorState } from '@/features/products/components/ErrorState'
+import { PageSizeSelect } from '@/features/products/components/PageSizeSelect'
 import { Pagination } from '@/features/products/components/Pagination'
 import { ProductCard } from '@/features/products/components/ProductCard'
 import { ProductListSkeleton } from '@/features/products/components/ProductListSkeleton'
@@ -13,7 +14,7 @@ export const ProductList = () => {
     useProducts(params)
 
   if (isPending) {
-    return <ProductListSkeleton />
+    return <ProductListSkeleton count={params.limit} />
   }
 
   if (isError) {
@@ -31,7 +32,7 @@ export const ProductList = () => {
     )
   }
 
-  const totalPages = Math.ceil(data.total / PAGE_SIZE)
+  const totalPages = Math.ceil(data.total / params.limit)
 
   return (
     <section aria-label="Product list">
@@ -49,15 +50,25 @@ export const ProductList = () => {
           </li>
         ))}
       </ul>
-      <Pagination
-        page={params.page}
-        totalPages={totalPages}
-        onPageChange={(page) => {
-          if (page !== params.page) {
-            updateParams({ page })
-          }
-        }}
-      />
+      <div className={styles.footer}>
+        <div className={styles.footerPagination}>
+          <Pagination
+            page={params.page}
+            totalPages={totalPages}
+            onPageChange={(page) => {
+              if (page !== params.page) {
+                updateParams({ page })
+              }
+            }}
+          />
+        </div>
+        <div className={styles.footerPageSize}>
+          <PageSizeSelect
+            value={params.limit}
+            onChange={(limit) => updateParams({ limit })}
+          />
+        </div>
+      </div>
     </section>
   )
 }

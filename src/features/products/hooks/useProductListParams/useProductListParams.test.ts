@@ -59,6 +59,21 @@ describe('parseProductListParams', () => {
     expect(result.q).toBe('phone')
     expect(result.category).toBe('')
   })
+
+  it('parses a whitelisted page size', () => {
+    expect(parseProductListParams(new URLSearchParams('limit=48')).limit).toBe(
+      48,
+    )
+  })
+
+  it.each(['13', '100', 'abc'])(
+    'falls back to the default page size for invalid limit %s',
+    (limit) => {
+      expect(parseProductListParams(new URLSearchParams({ limit })).limit).toBe(
+        defaultProductListParams.limit,
+      )
+    },
+  )
 })
 
 describe('serializeProductListParams', () => {
@@ -82,6 +97,15 @@ describe('serializeProductListParams', () => {
     const result = serializeProductListParams(params({ sortBy: 'rating' }))
 
     expect(result.toString()).toBe('sortBy=rating')
+  })
+
+  it('omits the default page size but serializes a non-default one', () => {
+    expect(serializeProductListParams(params({ limit: 12 })).toString()).toBe(
+      '',
+    )
+    expect(serializeProductListParams(params({ limit: 36 })).toString()).toBe(
+      'limit=36',
+    )
   })
 
   it('round-trips through parse', () => {
@@ -144,5 +168,31 @@ describe('applyProductListParamsPatch', () => {
 
     expect(result.sortBy).toBe('price')
     expect(result.order).toBe('desc')
+  })
+
+  it('resets page to 1 when the page size changes', () => {
+    const result = applyProductListParamsPatch(params({ page: 5 }), {
+      limit: 24,
+    })
+
+    expect(result.limit).toBe(24)
+    expect(result.page).toBe(1)
+  })
+
+  it('keeps filters when only the page size changes', () => {
+    const result = applyProductListParamsPatch(
+      params({ q: 'phone', sortBy: 'price', order: 'desc', page: 3 }),
+      { limit: 48 },
+    )
+
+    expect(result).toEqual(
+      params({
+        q: 'phone',
+        sortBy: 'price',
+        order: 'desc',
+        limit: 48,
+        page: 1,
+      }),
+    )
   })
 })

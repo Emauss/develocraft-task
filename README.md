@@ -10,8 +10,8 @@ A single-page app that displays a list of products from the [DummyJSON](https://
 
 - 🔎 **Debounced server-side search** (`/products/search`) — 350 ms debounce, superseded requests aborted.
 - 🗂️ **Category filter** (`/products/category/:slug`) and **sorting** by title / price / rating, ascending or descending.
-- 📄 **Server-side pagination** with windowed page controls (`1 … 5 6 7 … 17`).
-- 🔗 **URL-driven state** — `/?q=phone&sortBy=price&order=desc&page=2` fully reconstructs the view.
+- 📄 **Server-side pagination** with windowed page controls (`1 … 5 6 7 … 17`) and a **page-size selector** (12/24/36/48).
+- 🔗 **URL-driven state** — `/?q=phone&sortBy=price&order=desc&limit=24&page=2` fully reconstructs the view.
 - ♿ **Accessible** — semantic landmarks, labelled controls, `aria-current` on the active page, polite result-count announcements, keyboard-operable throughout.
 - 🧩 **Four UI states everywhere** — loading skeleton, error (with retry), empty (with clear-filters), and success.
 

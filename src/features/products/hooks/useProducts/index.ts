@@ -1,1 +1,1 @@
-export { fetchProducts, PAGE_SIZE, useProducts } from './useProducts'
+export { fetchProducts, useProducts } from './useProducts'

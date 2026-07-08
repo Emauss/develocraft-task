@@ -21,3 +21,36 @@
 .stale {
   opacity: 0.6;
 }
+
+// Bottom row: pagination centred, page-size select pushed to the far right,
+// both on the same line. The empty first column keeps the pagination centred
+// regardless of the select's width.
+.footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.footerPagination {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.footerPageSize {
+  grid-column: 3;
+  justify-self: end;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .footerPagination,
+  .footerPageSize {
+    grid-column: 1;
+    justify-self: center;
+  }
+}

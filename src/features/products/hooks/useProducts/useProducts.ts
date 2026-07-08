@@ -8,8 +8,6 @@ import {
 } from '@/api/products/endpoints'
 import type { ProductListParams } from '../useProductListParams'
 
-export const PAGE_SIZE = 12
-
 // Endpoint selection: a search query goes to /products/search, a category
 // filter to /products/category/:slug, everything else to the plain list.
 // The params logic guarantees q and category are never both set.
@@ -18,8 +16,8 @@ export const fetchProducts = (
   signal?: AbortSignal,
 ): Promise<ProductListResponse> => {
   const requestParams = {
-    limit: PAGE_SIZE,
-    skip: (params.page - 1) * PAGE_SIZE,
+    limit: params.limit,
+    skip: (params.page - 1) * params.limit,
     ...(params.sortBy ? { sortBy: params.sortBy, order: params.order } : {}),
   }
 
@@ -36,7 +34,8 @@ export const fetchProducts = (
 
 export const useProducts = (params: ProductListParams) => {
   return useQuery({
-    queryKey: ['products', { ...params, limit: PAGE_SIZE }],
+    // The key covers every request parameter, including the page size.
+    queryKey: ['products', params],
     queryFn: ({ signal }) => fetchProducts(params, signal),
     placeholderData: keepPreviousData,
   })
