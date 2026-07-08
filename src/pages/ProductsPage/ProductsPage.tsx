@@ -2,11 +2,17 @@ import { CategoryFilter } from '../../features/products/components/CategoryFilte
 import { ProductList } from '../../features/products/components/ProductList'
 import { SearchInput } from '../../features/products/components/SearchInput'
 import { SortControls } from '../../features/products/components/SortControls'
-import { useProductListParams } from '../../features/products/hooks/useProductListParams'
+import {
+  defaultProductListParams,
+  useProductListParams,
+} from '../../features/products/hooks/useProductListParams'
 import styles from './ProductsPage.module.scss'
 
 export function ProductsPage() {
   const { params, updateParams } = useProductListParams()
+
+  const hasActiveFilters =
+    params.q !== '' || params.category !== '' || params.sortBy !== null
 
   return (
     <main className={styles.page}>
@@ -26,6 +32,15 @@ export function ProductsPage() {
           onSortByChange={(sortBy) => updateParams({ sortBy })}
           onOrderChange={(order) => updateParams({ order })}
         />
+        {hasActiveFilters && (
+          <button
+            type="button"
+            className={styles.clearButton}
+            onClick={() => updateParams(defaultProductListParams)}
+          >
+            Clear filters
+          </button>
+        )}
       </div>
       <ProductList />
     </main>

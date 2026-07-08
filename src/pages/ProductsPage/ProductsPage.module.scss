@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 .page {
   max-width: 1120px;
   margin: 0 auto;
@@ -15,4 +17,18 @@
   gap: 1rem;
   align-items: flex-end;
   margin-bottom: 1.5rem;
+}
+
+.clearButton {
+  padding: 0.5rem 1rem;
+  color: $color-text-muted;
+  background: transparent;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text;
+    border-color: $color-text-subtle;
+  }
 }
