@@ -13,4 +13,11 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  transition: opacity 0.15s ease-in-out;
+}
+
+// The previous page stays visible (keepPreviousData) but dimmed while
+// the next one is loading.
+.stale {
+  opacity: 0.6;
 }
