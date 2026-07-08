@@ -1,13 +1,18 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
 import type { ProductListResponse } from '../../../api/products/dto'
-import { getProducts, searchProducts } from '../../../api/products/endpoints'
+import {
+  getProducts,
+  getProductsByCategory,
+  searchProducts,
+} from '../../../api/products/endpoints'
 import type { ProductListParams } from './useProductListParams'
 
 export const PAGE_SIZE = 12
 
-// Endpoint selection: a search query goes to /products/search,
-// everything else to the plain /products list.
+// Endpoint selection: a search query goes to /products/search, a category
+// filter to /products/category/:slug, everything else to the plain list.
+// The params logic guarantees q and category are never both set.
 export function fetchProducts(
   params: ProductListParams,
   signal?: AbortSignal,
@@ -20,6 +25,10 @@ export function fetchProducts(
 
   if (params.q) {
     return searchProducts({ ...requestParams, q: params.q }, signal)
+  }
+
+  if (params.category) {
+    return getProductsByCategory(params.category, requestParams, signal)
   }
 
   return getProducts(requestParams, signal)

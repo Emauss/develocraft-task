@@ -6,6 +6,8 @@ import App from './App'
 
 vi.mock('./api/products/endpoints', () => ({
   searchProducts: vi.fn(),
+  getProductsByCategory: vi.fn(),
+  getCategories: vi.fn(() => Promise.resolve([])),
   getProducts: vi.fn(() =>
     Promise.resolve({
       products: [

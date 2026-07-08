@@ -1,23 +1,17 @@
 @use 'mixins' as *;
-@use 'variables' as *;
 
 .wrapper {
   display: flex;
-  flex: 1;
   flex-direction: column;
   gap: 0.25rem;
-  min-width: 220px;
-  max-width: 320px;
 }
 
 .label {
   @include field-label;
 }
 
-.input {
+.select {
   @include field-control;
 
-  &::placeholder {
-    color: $color-text-subtle;
-  }
+  min-width: 180px;
 }

@@ -1,5 +1,7 @@
+import { CategoryFilter } from '../../features/products/components/CategoryFilter'
 import { ProductList } from '../../features/products/components/ProductList'
 import { SearchInput } from '../../features/products/components/SearchInput'
+import { SortControls } from '../../features/products/components/SortControls'
 import { useProductListParams } from '../../features/products/hooks/useProductListParams'
 import styles from './ProductsPage.module.scss'
 
@@ -13,6 +15,16 @@ export function ProductsPage() {
         <SearchInput
           value={params.q}
           onChange={(q) => updateParams({ q }, { replace: true })}
+        />
+        <CategoryFilter
+          value={params.category}
+          onChange={(category) => updateParams({ category })}
+        />
+        <SortControls
+          sortBy={params.sortBy}
+          order={params.order}
+          onSortByChange={(sortBy) => updateParams({ sortBy })}
+          onOrderChange={(order) => updateParams({ order })}
         />
       </div>
       <ProductList />
