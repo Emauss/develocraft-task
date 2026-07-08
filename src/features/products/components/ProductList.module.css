@@ -1,0 +1,14 @@
+.resultCount {
+  margin: 0 0 1rem;
+  color: #4a5568;
+  font-size: 0.875rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
