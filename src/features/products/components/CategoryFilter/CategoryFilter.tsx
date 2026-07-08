@@ -1,6 +1,6 @@
 import { useId } from 'react'
 
-import { useCategories } from '../../hooks/useCategories'
+import { useCategories } from '@/features/products/hooks/useCategories'
 import styles from './CategoryFilter.module.scss'
 
 interface CategoryFilterProps {

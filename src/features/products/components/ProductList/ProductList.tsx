@@ -1,10 +1,10 @@
-import { useProductListParams } from '../../hooks/useProductListParams'
-import { PAGE_SIZE, useProducts } from '../../hooks/useProducts'
-import { EmptyState } from '../EmptyState'
-import { ErrorState } from '../ErrorState'
-import { Pagination } from '../Pagination'
-import { ProductCard } from '../ProductCard'
-import { ProductListSkeleton } from '../ProductListSkeleton'
+import { useProductListParams } from '@/features/products/hooks/useProductListParams'
+import { PAGE_SIZE, useProducts } from '@/features/products/hooks/useProducts'
+import { EmptyState } from '@/features/products/components/EmptyState'
+import { ErrorState } from '@/features/products/components/ErrorState'
+import { Pagination } from '@/features/products/components/Pagination'
+import { ProductCard } from '@/features/products/components/ProductCard'
+import { ProductListSkeleton } from '@/features/products/components/ProductListSkeleton'
 import styles from './ProductList.module.scss'
 
 export function ProductList() {

@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 
-import { useDebouncedValue } from '../../hooks/useDebouncedValue'
+import { useDebouncedValue } from '@/features/products/hooks/useDebouncedValue'
 import styles from './SearchInput.module.scss'
 
 const SEARCH_DEBOUNCE_MS = 350

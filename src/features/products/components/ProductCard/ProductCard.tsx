@@ -1,4 +1,4 @@
-import type { Product } from '../../../../api/products/dto'
+import type { Product } from '@/api/products/dto'
 import styles from './ProductCard.module.scss'
 
 const priceFormatter = new Intl.NumberFormat('en-US', {

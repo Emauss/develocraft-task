@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 
-import type { ProductListResponse } from './api/products/dto'
+import type { ProductListResponse } from '@/api/products/dto'
 import App from './App'
 
-vi.mock('./api/products/endpoints', () => ({
+vi.mock('@/api/products/endpoints', () => ({
   searchProducts: vi.fn(),
   getProductsByCategory: vi.fn(),
   getCategories: vi.fn(() => Promise.resolve([])),

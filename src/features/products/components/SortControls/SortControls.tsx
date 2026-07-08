@@ -4,7 +4,7 @@ import {
   SORT_FIELDS,
   type SortField,
   type SortOrder,
-} from '../../hooks/useProductListParams'
+} from '@/features/products/hooks/useProductListParams'
 import styles from './SortControls.module.scss'
 
 const SORT_LABELS: Record<SortField, string> = {

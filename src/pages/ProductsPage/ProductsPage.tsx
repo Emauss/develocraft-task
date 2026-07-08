@@ -1,11 +1,11 @@
-import { CategoryFilter } from '../../features/products/components/CategoryFilter'
-import { ProductList } from '../../features/products/components/ProductList'
-import { SearchInput } from '../../features/products/components/SearchInput'
-import { SortControls } from '../../features/products/components/SortControls'
+import { CategoryFilter } from '@/features/products/components/CategoryFilter'
+import { ProductList } from '@/features/products/components/ProductList'
+import { SearchInput } from '@/features/products/components/SearchInput'
+import { SortControls } from '@/features/products/components/SortControls'
 import {
   defaultProductListParams,
   useProductListParams,
-} from '../../features/products/hooks/useProductListParams'
+} from '@/features/products/hooks/useProductListParams'
 import styles from './ProductsPage.module.scss'
 
 export function ProductsPage() {

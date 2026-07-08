@@ -1,11 +1,11 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 
-import type { ProductListResponse } from '../../../api/products/dto'
+import type { ProductListResponse } from '@/api/products/dto'
 import {
   getProducts,
   getProductsByCategory,
   searchProducts,
-} from '../../../api/products/endpoints'
+} from '@/api/products/endpoints'
 import type { ProductListParams } from './useProductListParams'
 
 export const PAGE_SIZE = 12

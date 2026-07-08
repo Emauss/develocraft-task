@@ -1,4 +1,4 @@
-import { apiGet } from '../client'
+import { apiGet } from '@/api/client'
 import {
   categoryListSchema,
   productListResponseSchema,
