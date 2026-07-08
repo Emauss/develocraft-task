@@ -1,9 +1,9 @@
-import { useProducts } from '../hooks/useProducts'
-import { EmptyState } from './EmptyState'
-import { ErrorState } from './ErrorState'
-import { ProductCard } from './ProductCard'
-import styles from './ProductList.module.css'
-import { ProductListSkeleton } from './ProductListSkeleton'
+import { useProducts } from '../../hooks/useProducts'
+import { EmptyState } from '../EmptyState'
+import { ErrorState } from '../ErrorState'
+import { ProductCard } from '../ProductCard'
+import { ProductListSkeleton } from '../ProductListSkeleton'
+import styles from './ProductList.module.scss'
 
 export function ProductList() {
   const { data, isPending, isError, error, refetch } = useProducts()

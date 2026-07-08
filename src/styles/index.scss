@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 *,
 *::before,
 *::after {
@@ -13,8 +15,8 @@ body {
     Roboto,
     sans-serif;
   line-height: 1.5;
-  color: #1a202c;
-  background-color: #f7fafc;
+  color: $color-text;
+  background-color: $color-bg;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -30,6 +32,6 @@ select {
 }
 
 :focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid $color-accent;
   outline-offset: 2px;
 }

@@ -1,5 +1,5 @@
-import type { Product } from '../../../api/products/dto'
-import styles from './ProductCard.module.css'
+import type { Product } from '../../../../api/products/dto'
+import styles from './ProductCard.module.scss'
 
 const priceFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',

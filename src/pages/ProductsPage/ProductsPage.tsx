@@ -1,5 +1,5 @@
-import { ProductList } from '../features/products/components/ProductList'
-import styles from './ProductsPage.module.css'
+import { ProductList } from '../../features/products/components/ProductList'
+import styles from './ProductsPage.module.scss'
 
 export function ProductsPage() {
   return (

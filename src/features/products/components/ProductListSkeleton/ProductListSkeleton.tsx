@@ -1,6 +1,6 @@
-import { PAGE_SIZE } from '../hooks/useProducts'
-import gridStyles from './ProductList.module.css'
-import styles from './ProductListSkeleton.module.css'
+import { PAGE_SIZE } from '../../hooks/useProducts'
+import gridStyles from '../ProductList/ProductList.module.scss'
+import styles from './ProductListSkeleton.module.scss'
 
 export function ProductListSkeleton() {
   return (
