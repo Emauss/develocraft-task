@@ -1,7 +1,5 @@
 import { z } from 'zod'
 
-const DEFAULT_BASE_URL = 'https://dummyjson.com'
-
 export type QueryParams = Record<string, string | number | undefined>
 
 export class ApiError extends Error {
@@ -22,10 +20,7 @@ export class ApiValidationError extends Error {
 }
 
 const buildUrl = (path: string, params?: QueryParams): string => {
-  const baseUrl = (import.meta.env.VITE_API_URL ?? DEFAULT_BASE_URL).replace(
-    /\/$/,
-    '',
-  )
+  const baseUrl = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
   const searchParams = new URLSearchParams()
   for (const [key, value] of Object.entries(params ?? {})) {
     if (value !== undefined) {
