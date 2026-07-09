@@ -20,7 +20,13 @@ export class ApiValidationError extends Error {
 }
 
 const buildUrl = (path: string, params?: QueryParams): string => {
-  const baseUrl = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+  const apiUrl = import.meta.env.VITE_API_URL
+  if (!apiUrl) {
+    throw new Error(
+      'VITE_API_URL is not set. Copy .env.example to .env (VITE_API_URL=https://dummyjson.com).',
+    )
+  }
+  const baseUrl = apiUrl.replace(/\/$/, '')
   const searchParams = new URLSearchParams()
   for (const [key, value] of Object.entries(params ?? {})) {
     if (value !== undefined) {
