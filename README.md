@@ -2,7 +2,7 @@
 
 A single-page app that displays a list of products from the [DummyJSON](https://dummyjson.com) API. The list is **searchable, filterable, sortable, and paginated — entirely server-side**, with **the URL as the single source of truth** for all list state. Every filter, sort, page, and search term lives in the query string, so links are shareable, browser back/forward steps through your history, and a refresh restores exactly what you were looking at.
 
-**Live demo:** _[deployment link placeholder]_
+**Live demo:** _[https://develocraft-task.vercel.app]_
 
 ---
 
@@ -57,8 +57,6 @@ cp .env.example .env
 # .env
 VITE_API_URL=https://dummyjson.com
 ```
-
-`VITE_API_URL` is optional — the app falls back to `https://dummyjson.com` when it is unset.
 
 ### Scripts
 
