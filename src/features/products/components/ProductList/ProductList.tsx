@@ -6,6 +6,7 @@ import { PageSizeSelect } from '@/features/products/components/PageSizeSelect'
 import { Pagination } from '@/features/products/components/Pagination'
 import { ProductCard } from '@/features/products/components/ProductCard'
 import { ProductListSkeleton } from '@/features/products/components/ProductListSkeleton'
+import { scrollToTop } from '@/lib/scrollToTop'
 import styles from './ProductList.module.scss'
 
 export const ProductList = () => {
@@ -58,6 +59,7 @@ export const ProductList = () => {
             onPageChange={(page) => {
               if (page !== params.page) {
                 updateParams({ page })
+                scrollToTop()
               }
             }}
           />
@@ -65,7 +67,12 @@ export const ProductList = () => {
         <div className={styles.footerPageSize}>
           <PageSizeSelect
             value={params.limit}
-            onChange={(limit) => updateParams({ limit })}
+            onChange={(limit) => {
+              if (limit !== params.limit) {
+                updateParams({ limit })
+                scrollToTop()
+              }
+            }}
           />
         </div>
       </div>
