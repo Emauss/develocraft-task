@@ -1,6 +1,6 @@
 import styles from './ErrorState.module.scss'
 
-interface ErrorStateProps {
+type ErrorStateProps = {
   error: Error
   onRetry: () => void
 }

@@ -37,7 +37,7 @@ const buildUrl = (path: string, params?: QueryParams): string => {
   return query ? `${baseUrl}${path}?${query}` : `${baseUrl}${path}`
 }
 
-interface ApiGetOptions {
+type ApiGetOptions = {
   params?: QueryParams
   signal?: AbortSignal
 }

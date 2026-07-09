@@ -3,7 +3,7 @@ import { useId } from 'react'
 import { useCategories } from '@/features/products/hooks/useCategories'
 import styles from './CategoryFilter.module.scss'
 
-interface CategoryFilterProps {
+type CategoryFilterProps = {
   value: string
   onChange: (category: string) => void
 }

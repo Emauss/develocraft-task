@@ -5,7 +5,7 @@ import styles from './SearchInput.module.scss'
 
 const SEARCH_DEBOUNCE_MS = 350
 
-interface SearchInputProps {
+type SearchInputProps = {
   value: string
   onChange: (value: string) => void
 }

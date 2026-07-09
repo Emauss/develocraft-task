@@ -13,7 +13,7 @@ const SORT_LABELS: Record<SortField, string> = {
   rating: 'Rating',
 }
 
-interface SortControlsProps {
+type SortControlsProps = {
   sortBy: SortField | null
   order: SortOrder
   onSortByChange: (sortBy: SortField | null) => void

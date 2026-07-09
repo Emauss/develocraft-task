@@ -6,7 +6,7 @@ import {
 } from '@/features/products/hooks/useProductListParams'
 import styles from './PageSizeSelect.module.scss'
 
-interface PageSizeSelectProps {
+type PageSizeSelectProps = {
   value: PageSize
   onChange: (value: PageSize) => void
 }

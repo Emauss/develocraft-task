@@ -1,7 +1,7 @@
 import { getPaginationItems } from './getPaginationItems'
 import styles from './Pagination.module.scss'
 
-interface PaginationProps {
+type PaginationProps = {
   page: number
   totalPages: number
   onPageChange: (page: number) => void

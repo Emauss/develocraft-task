@@ -1,6 +1,6 @@
 import styles from './EmptyState.module.scss'
 
-interface EmptyStateProps {
+type EmptyStateProps = {
   query?: string
   onClear?: () => void
 }

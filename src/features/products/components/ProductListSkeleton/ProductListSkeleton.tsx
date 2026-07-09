@@ -2,7 +2,7 @@ import { DEFAULT_PAGE_SIZE } from '@/features/products/hooks/useProductListParam
 import gridStyles from '@/features/products/components/ProductList/ProductList.module.scss'
 import styles from './ProductListSkeleton.module.scss'
 
-interface ProductListSkeletonProps {
+type ProductListSkeletonProps = {
   count?: number
 }
 

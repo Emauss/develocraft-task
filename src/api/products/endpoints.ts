@@ -10,7 +10,7 @@ import {
 const PRODUCT_SELECT =
   'id,title,description,price,rating,thumbnail,category,brand'
 
-export interface ProductListRequestParams {
+export type ProductListRequestParams = {
   limit: number
   skip: number
   sortBy?: string

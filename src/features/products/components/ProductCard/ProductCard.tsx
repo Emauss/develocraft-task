@@ -6,7 +6,7 @@ const priceFormatter = new Intl.NumberFormat('en-US', {
   currency: 'USD',
 })
 
-interface ProductCardProps {
+type ProductCardProps = {
   product: Product
 }
 
