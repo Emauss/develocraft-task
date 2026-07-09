@@ -1,9 +1,6 @@
 import { z } from 'zod'
 
-// Schemas mirror the DummyJSON contract for the fields we request via `select`.
-// `id` is always included by the API, even when not listed in `select`.
-
-export const productSchema = z.object({
+const productSchema = z.object({
   id: z.number().int(),
   title: z.string(),
   description: z.string(),
@@ -26,7 +23,7 @@ export const productListResponseSchema = z.object({
 
 export type ProductListResponse = z.infer<typeof productListResponseSchema>
 
-export const categorySchema = z.object({
+const categorySchema = z.object({
   slug: z.string(),
   name: z.string(),
   url: z.url(),
